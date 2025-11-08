@@ -59,6 +59,29 @@ Target: Web Responsive & Mobile iOS and Android.
 
 •	Authentication Flows: Google OAuth, guided onboarding.
 
+# Backend
+•	Language & Framework: Node.js + Express (or Fastify). Alternative: Python + FastAPI if the team prefers Python.
+
+•	RESTful API Style: The first set of endpoints will be in RESTful format, but GraphQL is also an option for complicated queries.
+
+#### Responsibilities:
+•	Coordinate search requests and apply business logic: free-first policy, "free paper only" filter.
+
+•	Call external scholarly APIs to fetch metadata and links.
+
+•	Orchestrate calls to AI summarizer to provide plain-English summaries.
+
+•	Generate and serve citations (formatting).
+
+•	User management, preferences, saved library, metrics.
+
+•	Rate limiting, caching, and error handling.
+
+#### Deployment: 
+Containerized, Docker; may be orchestrated on a cloud provider like AWS ECS / Fargate, GCP Cloud Run, or Kubernetes.
+
+
+
 
 
 
