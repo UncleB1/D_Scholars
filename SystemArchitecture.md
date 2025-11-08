@@ -321,6 +321,14 @@ Json
 
 6. `GET /api/library` — returns user library.
 
+## Final Notes
+
+DScholars should be a metadata, first product with open access and clarity. To get an MVP faster, leverage managed services and external APIs. 
+
+The architecture above is optimized for speed of iteration, but has clear expansion paths for scaling out search, AI usage, and robustness.
+
+
+
 
 
 
