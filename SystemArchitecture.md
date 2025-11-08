@@ -237,6 +237,16 @@ Json
 
 * Rate-limit AI summarization calls and monitor costs.
 
+## Operational Concerns
+
+* Monitoring & Logging: Use a central logging system (e.g., ELK stack or a managed alternative) and APM for tracing.
+
+* Cost Management: Summarization calls are the main cost driver; cache outputs and set reasonable size limits for summarization.
+
+* Backups: Regular backup of MongoDB/Firestore and S3 objects.
+
+* CI/CD: GitHub Actions or GitLab CI for automated testing, building, and deployment pipelines.
+
 
 
 
