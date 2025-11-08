@@ -108,7 +108,7 @@ All inter-service communication uses HTTPS with JSON payloads. Where low latency
 ### Typical request flows
 Search (user asks a query)
 
-1. Frontend sends POST /api/search with { query, filters }.
+1. Frontend sends `POST /api/search with { query, filters }`.
 
 2. Backend checks Redis cache for results.
 
@@ -122,11 +122,11 @@ Search (user asks a query)
 
 4. Backend returns a list of result cards (title, authors, year, source, isOpenAccess boolean, preview/abstract).
 
-5. Frontend shows results. For each card, user can request GET /api/summary?paperId=xxx.
+5. Frontend shows results. For each card, user can request `GET /api/summary?paperId=xxx.`
 
 #### Summary generation
 
-1. Frontend calls POST /api/summary with { paperId }.
+1. Frontend calls `POST /api/summary with { paperId }`.
 
 2. Backend either returns precomputed summary from DB or:
 
@@ -140,13 +140,13 @@ Search (user asks a query)
 
 #### Save and Library
 
-1. Frontend POST /api/library with { userId, paperId, tags }.
+1. Frontend `POST /api/library with { userId, paperId, tags }`.
 
 2. Backend persists record in MongoDB and returns updated library listing.
 
 #### Citation copy
 
-* Endpoint GET /api/citation?paperId=xxx&format=apa returns formatted citation string.
+* `Endpoint GET /api/citation?paperId=xxx&format=apa` returns formatted citation string.
 
 #### Authentication and Security
 
@@ -172,8 +172,70 @@ Search (user asks a query)
 
 Note: Summaries should always link back to the source.
 
+## Data Models
+User
 
+```
+json
 
+ {
+  "userId": "string",
+  "email": "string",
+  "name": "string",
+  "preferences": {
+    "defaultCitationFormat": "apa",
+    "freeOnly": true
+  },
+  "library": ["paperId1", "paperId2"]
+}
+
+```
+### Paper (cached metadata)
+
+```
+{   Json
+
+  "paperId": "string",
+  "title": "string",
+  "authors": ["string"],
+  "year": 2023,
+  "abstract": "string",
+  "source": "Semantic Scholar",
+  "isOpenAccess": true,
+  "links": {
+    "pdf": "https://...",
+    "doi": "https://doi.org/..."
+  },
+  "summary": {
+    "text": "plain english summary",
+    "createdAt": "ISODate"
+  }
+}
+
+```
+### LibraryItem
+
+```
+Json
+{
+  "userId": "string",
+  "paperId": "string",
+  "tags": ["health", "policy"],
+  "savedAt": "ISODate"
+}
+
+```
+## Security and Privacy Considerations
+
+* Use HTTPS everywhere.
+
+* Store sensitive secrets (API keys) securely in a secrets manager.
+
+* Minimize storage of raw full-text paywalled documents; store only metadata and summaries.
+
+* Comply with GDPR-like principles: allow users to delete their data (right to be forgotten).
+
+* Rate-limit AI summarization calls and monitor costs.
 
 
 
