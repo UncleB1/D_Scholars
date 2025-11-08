@@ -327,6 +327,10 @@ DScholars should be a metadata, first product with open access and clarity. To g
 
 The architecture above is optimized for speed of iteration, but has clear expansion paths for scaling out search, AI usage, and robustness.
 
+#### Here is the link for the wireframe:
+
+*https://balsamiq.cloud/s9c7lpu/pr1u41i*
+
 
 
 
