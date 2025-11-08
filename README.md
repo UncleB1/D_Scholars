@@ -1,5 +1,5 @@
 
-# Overview
+# Product Overview
 DScholars was built to help students and educators stay on top of their academics and personal growth by combining everything a learner needs, from note-taking and resource sharing to studying reminders and tracking progress. The app is an all-in-one experience, simplifying how students organize their learning journey, collaborate with peers, and access academics anywhere and everywhere.
 
 DScholars app is designed with students and educators in mind, it bridges the gap between studying smarter and managing time more effectively. It's not just another productivity tool; it's a study partner tailored to the way today's students learn.
