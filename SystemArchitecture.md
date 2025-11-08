@@ -42,5 +42,26 @@ css
    [Database: MongoDB / Firebase] ----------> [Storage: S3 / Cloud Storage]
 ```
 
+# Frontend, Backend, and Database Stack
+
+### Frontend 
+Target: Web Responsive & Mobile iOS and Android.
+
+#### Framework:
+•	Web: React (via Create React App or Vite) with either a component library or Tailwind CSS.
+
+•	Mobile: React Native (with shared components where possible), or Flutter if preferred.
+
+#### Responsibilities:
+•	Search and filtering UI, results list, summary view, citation actions, library management, onboarding/tutorial.
+
+•	Local state and caching for immediate responsiveness.
+
+•	Authentication Flows: Google OAuth, guided onboarding.
+
+
+
+
+
 
 
