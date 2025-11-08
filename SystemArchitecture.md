@@ -307,6 +307,20 @@ Json
 
 * Hardening security and privacy reviews.
 
+## Example of API Endpoints
+
+1. `POST /api/search` — body `{ query, filters }` — returns search results.
+
+2. `GET /api/paper/:paperId` — returns paper metadata and summary.
+
+3. `POST /api/summary` — body `{ paperId }` — triggers/generates summary.
+
+4. `GET /api/citation?paperId=xxx&format=apa` — returns formatted string.
+
+5. `POST /api/library` — body `{ paperId, tags }` — save item.
+
+6. `GET /api/library` — returns user library.
+
 
 
 
