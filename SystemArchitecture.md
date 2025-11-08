@@ -247,6 +247,66 @@ Json
 
 * CI/CD: GitHub Actions or GitLab CI for automated testing, building, and deployment pipelines.
 
+## Steps to Complete — MVP Roadmap
+
+#### Phase 0 — Prep
+
+* Project repo + monorepo or separate frontend/backend repos.
+
+* Prototype UI in Figma (done).
+
+* Choose cloud provider (AWS, GCP, or Azure).
+
+* Create accounts for scholarly APIs and AI provider.
+
+#### Phase 1 — Core Backend & API
+
+* Scaffold Node.js + Express API.
+
+* Implement authentication (Google OAuth) and basic user model.
+
+* Implement /api/search integration with Semantic Scholar / CrossRef.
+
+* Build caching layer with Redis.
+
+* Implement /api/summary route that calls AI summarizer and stores summary in DB.
+
+* Implement /api/citation route to return formatted citation.
+
+#### Phase 2 — Frontend MVP
+
+* Scaffold React web app (or React Native for mobile).
+
+* Implement Landing, Search, Results, Summary, and Library screens.
+
+* Integrate OAuth for login.
+
+* Wire frontend to backend endpoints.
+
+* Add simple onboarding and tooltips.
+
+#### Phase 3 — Quality, Testing & Deployment
+
+* Add unit tests and integration tests for backend logic.
+
+* Add end-to-end tests for key user flows (search → summary → save → cite).
+
+* Containerize and create CI/CD pipelines.
+
+* Deploy to staging and run basic load tests.
+
+* Prepare alpha release and on-board pilot users (3 universities or small groups).
+
+#### Phase 4 — Improvements & Scaling
+
+* Add faceted search and internal search index (Typesense/Elasticsearch).
+
+* Add more robust citation formats and export (BibTeX).
+
+* Introduce premium features, subscription logic, and analytics dashboard.
+
+* Hardening security and privacy reviews.
+
 
 
 
