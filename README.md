@@ -80,6 +80,8 @@ Many students struggle to handle the process of learning itself: juggling classe
 
 •	Version Control: Git & GitHub
 
+![image showing the output of the feature preview mockup for a mobile app.](/Presentation%20-%20Coming%20Soon.gif)
+
 
 
 
