@@ -1,7 +1,7 @@
 
 # DScholars Technical Blueprint
 
-### Architecture Overview
+## Architecture Overview
 
 DScholars is a lightweight, scalable web + mobile product that exposes a student-friendly academic search and reading experience. The system combines:
 
@@ -14,7 +14,7 @@ summarization, authentication, and data storage.
 
 •	A persistence layer for user data, saved items, and usage metrics.
 
-### High-level Flow
+##### High-level Flow
 
 DScholars is a single product surface, available on the web and mobile, which enables learners to discover, read, and cite scholarly work in plain English. It has three logical layers:
 
@@ -42,7 +42,7 @@ css
    [Database: MongoDB / Firebase] ----------> [Storage: S3 / Cloud Storage]
 ```
 
-# Frontend, Backend, and Database Stack
+## Frontend, Backend, and Database Stack
 
 ### Frontend 
 Target: Web Responsive & Mobile iOS and Android.
@@ -59,7 +59,7 @@ Target: Web Responsive & Mobile iOS and Android.
 
 •	Authentication Flows: Google OAuth, guided onboarding.
 
-# Backend
+### Backend
 •	Language & Framework: Node.js + Express (or Fastify). Alternative: Python + FastAPI if the team prefers Python.
 
 •	RESTful API Style: The first set of endpoints will be in RESTful format, but GraphQL is also an option for complicated queries.
@@ -80,7 +80,7 @@ Target: Web Responsive & Mobile iOS and Android.
 #### Deployment: 
 Containerized, Docker; may be orchestrated on a cloud provider like AWS ECS / Fargate, GCP Cloud Run, or Kubernetes.
 
-# Database and Storage
+### Database and Storage
 
 Primary DB: MongoDB (Atlas) or Firebase Firestore.
    
