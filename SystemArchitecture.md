@@ -80,6 +80,28 @@ Target: Web Responsive & Mobile iOS and Android.
 #### Deployment: 
 Containerized, Docker; may be orchestrated on a cloud provider like AWS ECS / Fargate, GCP Cloud Run, or Kubernetes.
 
+# Database and Storage
+
+Primary DB: MongoDB (Atlas) or Firebase Firestore.
+   
+   •	Stores user profiles, saved papers, user libraries, usage metrics, and annotations.
+
+#### Search/Indexing: 
+Use external scholarly APIs as the source of truth; optionally maintain a lightweight internal index for fast faceted search and user-specific signals.
+
+#### Cache: 
+Redis is used for query caching, session caching, and rate-limiting counters.
+
+#### Blob Storage: 
+S3-compatible storage for any persisted PDFs, user-uploaded files, and generated artifacts - for example, generated summary objects.
+
+#### AI Models:
+Serverless, using an external provider such as OpenAI/Anthropic/in-house transformer serving. 
+
+#### Store:
+ summary outputs in DB to optimize repeat requests.
+
+
 
 
 
