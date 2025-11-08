@@ -101,7 +101,76 @@ Serverless, using an external provider such as OpenAI/Anthropic/in-house transfo
 #### Store:
  summary outputs in DB to optimize repeat requests.
 
+## How Components Communicate
 
+All inter-service communication uses HTTPS with JSON payloads. Where low latency or streaming is needed, the design can incorporate WebSockets for live progress updates when summaries are being generated.
+
+### Typical request flows
+Search (user asks a query)
+
+1. Frontend sends POST /api/search with { query, filters }.
+
+2. Backend checks Redis cache for results.
+
+#### If cache miss:
+
+* Backend queries scholarly APIs (Semantic Scholar / CrossRef / PubMed) for metadata and links.
+
+* Optionally fetches open-access PDFs or links to full text.
+
+* Optionally checks internal search index for cached matches.
+
+4. Backend returns a list of result cards (title, authors, year, source, isOpenAccess boolean, preview/abstract).
+
+5. Frontend shows results. For each card, user can request GET /api/summary?paperId=xxx.
+
+#### Summary generation
+
+1. Frontend calls POST /api/summary with { paperId }.
+
+2. Backend either returns precomputed summary from DB or:
+
+* Fetches paper abstract/text.
+
+* Sends the text to the AI summarization service (via API).
+
+* Receives summary, stores it in DB, and returns it.
+
+3. Frontend shows summary and one-click citation actions.
+
+#### Save and Library
+
+1. Frontend POST /api/library with { userId, paperId, tags }.
+
+2. Backend persists record in MongoDB and returns updated library listing.
+
+#### Citation copy
+
+* Endpoint GET /api/citation?paperId=xxx&format=apa returns formatted citation string.
+
+#### Authentication and Security
+
+* Use OAuth2 with Google sign-in to support academic emails but do not require a school email for read access (optional for premium or researcher features).
+
+* Use JWT access tokens for session management with short expiry.
+
+* Rate-limit unauthenticated and authenticated endpoints differently.
+
+## Why This Approach Is Technically Feasible
+
+* Proven building blocks: The stacks proposed (React/React Native, Node.js, MongoDB, Redis, S3) are widely used and well-supported with many libraries. They enable faster delivery for an MVP.
+
+* External scholarly data: APIs such as Semantic Scholar, CrossRef, and PubMed offer metadata and abstracts without needing to crawl academic publisher sites. This reduces legal and technical complexity.
+
+* AI summarization as a service: Using an API (OpenAI, Anthropic, or other) lets you add summarization without building and maintaining large ML models.
+
+* Incremental rollout: Start with metadata + abstracts (open access) and add deeper integrations later (e.g., institutional access, paywalled previews).
+
+* Scalability: Caching hot queries in Redis and caching AI results avoids re-costly summarization. Containerized deployment and managed DB services allow horizontal scaling.
+
+* Compliance and ethics: By prioritizing open access materials and not redistributing copyrighted PDFs, the approach minimizes legal risk. 
+
+Note: Summaries should always link back to the source.
 
 
 
