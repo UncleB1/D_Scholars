@@ -295,7 +295,7 @@ Json
 
 * Deploy to staging and run basic load tests.
 
-* Ready alpha release and on-board pilot users (3 universities or small groups).
+* Prepare alpha release and on-board pilot users (3 universities or small groups).
 
 #### Phase 4 — Improvements & Scaling
 
